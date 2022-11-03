@@ -1,4 +1,5 @@
 # Hugging face : Diffusion model
 
-![Hugginggface](huggingface.jpeg "huggingface")
-
+<center>
+<img src="huggingface.jpeg" alt="huggingface" style="height: 200px; width:300px;"/>
+</center>
