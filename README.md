@@ -1,7 +1,7 @@
 # Diffusion model
 
 <p align="center">
-<img src="Diffusion_exemple.jpeg" alt="diffusion_example" style="height: 150px; width:500px;"/>
+<img src="Diffusion_exemple.jpeg" alt="diffusion_example" style="height: 175px; width:500px;"/>
 </p>
 
 Diffusion models are the new state-of-art generative models that are used for image synthesis. They are called Denoise Diffusion Probabilistic Models (DDPMs) and are considered as score-based generative models.
