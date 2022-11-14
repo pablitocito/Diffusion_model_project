@@ -1,0 +1,5 @@
+torch==1.13.0
+einops==0.6.0
+keras==2.10.0
+pandas==0.20.3
+numpy==1.23.4
