@@ -7,3 +7,6 @@ https://colab.research.google.com/drive/120kYYBOVa1i0TD85RjlEkFjaWDxSFUx3?usp=sh
 
 Huging face diffuseur
 https://github.com/huggingface/diffusers/blob/main/README.md
+
+Train hugging face diffuseur
+https://colab.research.google.com/github/huggingface/notebooks/blob/main/diffusers/training_example.ipynb
