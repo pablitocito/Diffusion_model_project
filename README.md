@@ -21,6 +21,14 @@ In a first time, we need to specify an SDE that will the data distribution $p_0$
 To build my own difffusion model I will use the [hugging face](https://huggingface.co/docs/diffusers/api/pipelines/ddpm) library, their Denoising Diffusion Probabilistic Models are designed according to a novel connection between diffusion probabilistic models and denoising score matching with Langevin dynamics.
 
 
+First to implement our model we need to create an U-Net. The U-net is a specifical Neural Network  in U shape.(e.g)
+<p align="center">
+<img src="u-net-architecture.png" alt="u-net" style="height: 200px; width:'400px;"/>
+</p>
+
+The U-net will first "compress" the image and in a second will blow the image to it's original size. The particularity is that we skip some connection from the previous layer to laters ones in order to add spatial and context information to the final output.
+
+
 
 
 
