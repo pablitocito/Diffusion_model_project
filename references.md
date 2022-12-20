@@ -10,3 +10,6 @@ https://github.com/huggingface/diffusers/blob/main/README.md
 
 Train hugging face diffuseur
 https://colab.research.google.com/github/huggingface/notebooks/blob/main/diffusers/training_example.ipynb
+
+Gif
+https://huggingface.co/blog/annotated-diffusion
