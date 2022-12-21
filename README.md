@@ -26,7 +26,7 @@ We will use a U-net architecture for our DDPM. The U-net is a specifical Neural 
 The U-net will first "compress" the image and in a second will blow the image to it's original size. The particularity is that we skip some connection from the previous layer to laters ones in order to add spatial and context information to the final output.
 
 First we add noises progressively to the original image allowing the model to learn from it.
-It's the forward process of our U-Net. 
+It's the forward process of our U-Net. We use the MNIST-fashion dataset to test our model.
 
 
 <p align="center">
@@ -61,6 +61,12 @@ $$
 <br />
 
 # Result
+
+
+<p align="center">
+<img src="img/fashion.gif"  style="background-color:white;height: 150px; width:'200px;"/>
+</p>
+
 
 
 
