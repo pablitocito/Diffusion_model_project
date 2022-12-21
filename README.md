@@ -18,15 +18,50 @@ In a first time, we need to specify an SDE that will the data distribution $p_0$
 
 ## Our Diffusion model
 
-To build my own difffusion model I will use the [hugging face](https://huggingface.co/docs/diffusers/api/pipelines/ddpm) library, their Denoising Diffusion Probabilistic Models are designed according to a novel connection between diffusion probabilistic models and denoising score matching with Langevin dynamics.
-
-
-First to implement our model we need to create an U-Net. The U-net is a specifical Neural Network  in U shape.(e.g)
+We will use a U-net architecture for our DDPM. The U-net is a specifical Neural Network  in U shape.(e.g)
 <p align="center">
-<img src="u-net-architecture.png" alt="u-net" style="height: 200px; width:'400px;"/>
+<img src="u-net-architecture.png" alt="u-net" style="background-color:white;height: 200px; width:'400px;"/>
 </p>
 
 The U-net will first "compress" the image and in a second will blow the image to it's original size. The particularity is that we skip some connection from the previous layer to laters ones in order to add spatial and context information to the final output.
+
+First we add noises progressively to the original image allowing the model to learn from it.
+It's the forward process of our U-Net. 
+
+
+<p align="center">
+<img src="noise_adding0.png"  style="background-color:white;height: 150px; width:'200px;"/>
+</p>
+
+
+<p align="center">
+<img src="noise_adding.png"  style="background-color:white;height: 150px; width:'200px;"/>
+</p>
+
+<p align="center">
+<img src="noise_adding5.png"  style="background-color:white;height: 150px; width:'200px;"/>
+</p>
+
+<p align="center">
+<img src="noise_adding75.png"  style="background-color:white;height: 150px; width:'200px;"/>
+</p>
+<p align="center">
+<img src="noise_adding100.png"  style="background-color:white;height:150px; width:'200px;"/>
+</p>
+
+At each timesteps our model will optimise the MSE between the estimate noise from our model $\epsilon_\theta$ and random noise $\epsilon$ .
+The final equation become to minimise:
+
+<br />
+
+$$
+||ϵ - ϵ_\theta(x_t,t)||^2=||\epsilon - \epsilon_\theta(\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon, t)||^2
+$$
+
+<br />
+
+# Result
+
 
 
 
