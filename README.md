@@ -64,7 +64,7 @@ $$
 
 
 <p align="center">
-<img src="img/fashion.gif"  style="background-color:white;height: 150px; width:'200px;"/>
+<img src="img/fashion.gif"  style="background-color:white;height: 300px; width:'400px;"/>
 </p>
 
 
