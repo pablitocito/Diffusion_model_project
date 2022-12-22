@@ -50,7 +50,7 @@ It's the forward process of our U-Net. We use the MNIST-fashion dataset to test 
 </p>
 
 At each timesteps our model will optimise the MSE between the estimate noise from our model $\epsilon_\theta$ and random noise $\epsilon$ .
-The final equation become to minimise:
+The final equation to minimise become:
 
 <br />
 
