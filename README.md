@@ -66,6 +66,7 @@ Where  $Y_i$ is the true value and $\hat{Y}_i$ the predicted value. In our case 
 $$
 ||ϵ - ϵ_\theta(x_t,t)||^2=||\epsilon - \epsilon_\theta(\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon, t)||^2
 $$
+
 <br />
 At each epoch we loop over the number of timestep.We some noise for each of the images in the batch, a timestep and the respective alpha_bars.We compute the noisy image based on the loaded one and the time-step (forward process).We get the model toestimate the noise based on the images and the time-step. And the last for for that  particular timestep is to compute the MSE between the noise plugged and the predicted noise.
 
