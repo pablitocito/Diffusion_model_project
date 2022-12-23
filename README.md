@@ -4,7 +4,7 @@
 <img src="img/Diffusion_exemple.jpeg" alt="diffusion_example" style="height: 175px; width:500px;"/>
 </p>
 
-Diffusion models are the new state-of-art generative models that are used for image synthesis. They are called Denoise Diffusion Probabilistic Models (DDPMs) and are considered as score-based generative models.
+Diffusion models are the new state-of-art generative models that are used for image synthesis. They are called Denoise Diffusion Probabilistic Models (DDPMs) and are considered as score-based generative models. A score-based model is a type of model that makes predictions by generating a score or probability for each possible output class. These scores can then be used to rank the output classes and select the class with the highest score as the final prediction. Score-based models are often used in classification tasks, where the goal is to predict the class label of an input sample.
 The main goal of these models is to generate/synthetize image from noise by reversing the process. We can define diffusion model as a parameterized Markov chain trained using
 variational inference to produce samples matching the data after finite time.[[1]](/papers/Denoising%20Diffusion%20Probabilistic%20Models.pdf)
 
