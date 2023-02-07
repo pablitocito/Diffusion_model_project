@@ -59,7 +59,7 @@ $$
 
 <br />
 
-Where  $Y_i$ is the true value and $\hat{Y}_i$ the predicted value. In our case the the true value would be the a random noise $\epsilon$ and the predicted value $\epsilon_θ$. Where $\epsilon_θ$ is a function of $t$ the timestep and $x$ the image. The final equation become to minimise:
+Where  $Y_i$ is the true value and $\hat{Y}_i$ the predicted value. In our case the the true value would be the a random noise $\epsilon$ and the predicted value will be $\epsilon_θ$. Where $\epsilon_θ$ is a function of $t$ the timestep and $x$ the image. The final equation become to minimise:
 
 <br />
 
@@ -68,7 +68,7 @@ $$
 $$
 
 <br />
-At each epoch we loop over the number of timestep.We some noise for each of the images in the batch, a timestep and the respective alpha_bars.We compute the noisy image based on the loaded one and the time-step (forward process).We get the model toestimate the noise based on the images and the time-step. And the last for for that  particular timestep is to compute the MSE between the noise plugged and the predicted noise.
+At each epoch we loop over the number of timestep.We add some noise for each of the images in the batch, a timestep and the respective alpha_bars. We compute the noisy image based on the loaded one and the time-step (forward process). We get the model to estimate the noise based on the images and the time-step. And the last part for that particular timestep, is to compute the MSE between the noise plugged and the predicted noise.
 
 
 After training our model will be able to generate an image from random noises.
