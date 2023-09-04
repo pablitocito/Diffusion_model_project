@@ -80,7 +80,7 @@ Finally, the model is optimized using Mean Squared Error (MSE) between the predi
 
 We will use a U-net architecture for our DDPM. The U-net is a specifical Neural Network  in U shape.(e.g)
 <p align="center">
-  <img src="img/unet-2.png" alt="u-net" width="400px" height="200px" style="background-color:white;"/>
+  <img src="img/unet-2.png" alt="u-net" width="800px" height="400px" style="background-color:white;"/>
 </p>
 
 The U-net will first "compress" the image and in a second will blow the image to it's original size. The particularity is that we skip some connection from the previous layer to laters ones in order to add spatial and context information to the final output. Our U-net is first design to take in input an 1x28x28 image. But as we tried later we can convert it for a different image format as 3x128x128.
