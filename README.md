@@ -73,8 +73,10 @@ With:
 </br>
 Finally, the model is optimized using Mean Squared Error (MSE) between the predicted noise for time step t and the true noise at t. 
 
-
-![Algorithm](img/algo.png)
+</br> 
+<p align="center">
+  <img src="img/algo.png" alt="Algorithm" width="50%" height="50%" />
+</p>
 
 ## Our Diffusion model
 
