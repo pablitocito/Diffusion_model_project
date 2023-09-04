@@ -10,11 +10,70 @@ variational inference to produce samples matching the data after finite time.[[1
 
 The learning process is composed of a forward stochastic differential equation (SDE) that consist in converting data(images) slowly into noise. Then we entend to reverse the diffusion process yields score-based generative models to found back the original data by starting with the noise. This is the the backward propagation part
 ## Detailled process
-###  Stochastic differential equation
+### Learning Process of a DDPM (Diffusion Models)
+
+The learning process of a Diffusion Model (DDPM) consists of two phases:
+
+- **Forward Diffusion Process ($q$):** During this phase, Gaussian noise is progressively added to the image until it becomes a "blurred" image.
+- **Backward Diffusion Process ($p_\theta$):** In this backward process, we train our model to create or recover an image from a completely noisy image.
+  
+</br>
+
+![Forward Diffusion Process](img/forward.png)
+
+The noise addition process is divided into T steps, ranging from a noisy image at 100% to the original image at 0%. To enable the model to learn to reconstruct the images, a cost function needs to be introduced.
+
+"Let $q(x_0)$ be the distribution of real data, such as 'real images.' We can sample from this distribution to obtain an image $x_0 \sim q(x_0)$. We define the forward process $q(x_t \mid x_{t-1})$, which adds Gaussian noise at each step $t$, according to a known sequence of variances $0 < \beta_1 < \beta_2 < ... < \beta_T < 1$.
 
 
-In a first time, we need to specify an SDE that will the data distribution $p_0$ to a prior distribution  $p_T$. In a second time, we need to define the loss function. Now we just need to implement the forward propagation SDE and the reverse-time SDE. To solve the reverse-time SDE the Euler-Maruyama method is usually used.(see link for formula)
-[[2]](https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method)
+$$
+    q(x_t \mid x_{t-1}) = \mathcal{N}(x_t ; \sqrt{(1 - \beta_t)} x_{t-1}, \beta_t I)
+$$
+
+Now let's examine the backward process. We assume that the inverse process is also Gaussian, and any Gaussian distribution is defined by two parameters:
+
+A mean parameterized by $(\mu_\theta)$
+A variance parameterized by $(\Sigma_\theta)$
+Thus, we can parameterize the process as follows:
+
+$$
+    p_\theta(x_{t-1} \mid x_t) = \mathcal{N}(x_{t-1} ; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))
+$$
+
+Here:
+
+- $\mu_\theta(x_t, t)$ represents the mean parameter of the conditional probability distribution. It is modeled by the neural network and depends on the input $x_t$ and the time step $t$.
+  
+</br>
+
+- $\Sigma_\theta(x_t, t)$ is the fixed variance parameter of the conditional probability distribution. Unlike the mean, it is not learned by the neural network and remains constant during training. It is also conditioned on the input $x_t$ and time step $t."
+In the interest of simplifying explanations, we will simply say that the cost function is equivalent to the L2-loss function with respect to the mean:
+
+
+$$
+    L2_{\text{loss}}(\mu_p, \mu_q) = \frac{1}{2} \sum_{i=1}^k (\mu_q^{(i)} - \mu_p^{(i)})^2
+$$
+
+The final cost function $L_t$ for a random noise level $t$ given $\epsilon \sim \mathcal{N}(0, I)$ is as follows:
+
+$$
+    \| \epsilon - \epsilon_\theta(x_t,t)\|^2 =\|\epsilon - \epsilon_\theta(\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon, t)\|^2
+$$
+
+
+With:
+
+- $x_0$ as the initial noisy image.
+- $\epsilon$ as the 'pure' noise.
+- $x_t$ as the image at time step $t$ obtained by the inverse diffusion process.
+- $\epsilon (x_t,t)$ as the output of the neural network for the inverse diffusion step with image $x_t$.
+- $\alpha_t := 1 - \beta_t$
+- $\bar{\alpha}t := \prod{s=1}^t \alpha_s$.
+  
+</br>
+Finally, the model is optimized using Mean Squared Error (MSE) between the predicted noise for time step t and the true noise at t. <a name="myfootnote2">2</a>: https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
+
+
 
 ## Our Diffusion model
 
@@ -85,8 +144,7 @@ After training our model will be able to generate an image from random noises.
 
 
 
-
-
+<sup>[2](#myfootnote2)</sup>
 
 
 
